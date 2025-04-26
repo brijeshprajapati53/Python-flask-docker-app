@@ -21,3 +21,4 @@ resource "azurerm_subnet" "exam_subnet" {
   virtual_network_name = azurerm_virtual_network.exam_vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
+
