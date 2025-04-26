@@ -2,16 +2,9 @@ pipeline {
     agent any
 
     environment {
-        // DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-        // IMAGE_NAME = 'yourusername/flask-app'  // Replace with your Docker Hub repo name
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+        IMAGE_NAME = 'brijeshprajapati53/flask-app'  // Replace with your Docker Hub repo name
 
-        AZURE_CREDENTIALS_ID = 'azure-service-principal' // Must be configured in Jenkins credentials
-        ACR_NAME = "acrbrijesh1238"
-        ACR_LOGIN_SERVER = "acrbrijesh1238.azurecr.io"
-        IMAGE_NAME = "mynodeapp"
-        TAG = "latest"
-        RESOURCE_GROUP = "examresource"
-        LOCATION = "East US 2"
     }
 
     stages {
@@ -48,10 +41,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Docker image built and pushed successfully!'
+            echo 'Docker image built and pushed successfully!'
         }
         failure {
-            echo '❌ Pipeline failed.'
+            echo 'Pipeline failed.'
         }
     }
 }
