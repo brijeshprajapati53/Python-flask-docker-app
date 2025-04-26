@@ -2,14 +2,22 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-        IMAGE_NAME = 'yourusername/flask-app'  // Replace with your Docker Hub repo name
+        // DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+        // IMAGE_NAME = 'yourusername/flask-app'  // Replace with your Docker Hub repo name
+
+        AZURE_CREDENTIALS_ID = 'azure-service-principal' // Must be configured in Jenkins credentials
+        ACR_NAME = "acrbrijesh1238"
+        ACR_LOGIN_SERVER = "acrbrijesh1238.azurecr.io"
+        IMAGE_NAME = "mynodeapp"
+        TAG = "latest"
+        RESOURCE_GROUP = "examresource"
+        LOCATION = "East US 2"
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/yourusername/your-flask-repo.git'  // Replace with your repo
+                git branch: 'main', url: 'https://github.com/brijeshprajapati53/Python-flask-docker-app.git'
             }
         }
 
